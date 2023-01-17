@@ -18,6 +18,7 @@ const app = express();
 // connect();
 
 // mongoose.connect(process.env.URL,() => console.log("MongoDB Connected"))
+mongoose.set('bufferCommands', false);
 
 const connectDatabase = async () => {
     try {
