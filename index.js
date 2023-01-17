@@ -17,7 +17,7 @@ const app = express();
 // connect to DB
 // connect();
 
-mongoose.connect(process.env.URL, { useNewUrlParser: true }, () => console.log("MongoDB Connected"))
+mongoose.connect(process.env.URL,() => console.log("MongoDB Connected"))
 
 require('./models/Post')
 require('./models/user')
