@@ -13,6 +13,9 @@ const app = express();
 // connect to DB
 connect();
 
+require('./models/Post')
+require('./models/user')
+
 app.use(bodyParser.json());
 app.use("/", router);
 app.use("/", postRoutes);
