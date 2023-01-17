@@ -5,13 +5,19 @@ const postRoutes = require('./routes/postRoutes')
 const path = require('path')
 const cors = require('cors');
 
+const mongoose = require('mongoose')
+require('dotenv').config()
+mongoose.set("strictQuery", false);
+
 const bodyParser = require('body-parser')
 
 require('dotenv').config()
 const app = express();
 
 // connect to DB
-connect();
+// connect();
+
+mongoose.connect(process.env.URL, { useNewUrlParser: true }, () => console.log("MongoDB Connected"))
 
 require('./models/Post')
 require('./models/user')
