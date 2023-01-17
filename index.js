@@ -17,7 +17,19 @@ const app = express();
 // connect to DB
 // connect();
 
-mongoose.connect(process.env.URL,() => console.log("MongoDB Connected"))
+// mongoose.connect(process.env.URL,() => console.log("MongoDB Connected"))
+
+const connectDatabase = async () => {
+    try {
+      await mongoose.connect(process.env.URL);
+      console.log("connected to database");
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  };
+  
+connectDatabase();
 
 require('./models/Post')
 require('./models/user')
