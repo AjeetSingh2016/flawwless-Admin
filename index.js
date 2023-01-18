@@ -21,7 +21,13 @@ const app = express();
 
 const connectDatabase = async () => {
     try {
-      await mongoose.connect(process.env.URL);
+      await mongoose.connect(process.env.URL,
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          useCreateIndex: true,
+          useFindAndModify: false,  
+      });
       console.log("connected to database");
     } catch (error) {
       console.log(error);
