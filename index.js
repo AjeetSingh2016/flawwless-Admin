@@ -21,12 +21,8 @@ const app = express();
 
 const connectDatabase = async () => {
     try {
-      await mongoose.connect(process.env.URL,
-        {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-          useCreateIndex: true,
-          useFindAndModify: false,  
+      await mongoose.connect(process.env.URL, ()=>{
+        app.listen(PORT)
       });
       console.log("connected to database");
     } catch (error) {
@@ -59,7 +55,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 
-app.listen(PORT)
+
 
 
 // Databse User
