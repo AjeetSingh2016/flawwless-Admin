@@ -21,16 +21,14 @@ const app = express();
 
 const connectDatabase = async () => {
     try {
-      await mongoose.connect(process.env.URL, ()=>{
-        app.listen(PORT)
-      });
+      await mongoose.connect(process.env.URL);
       console.log("connected to database");
     } catch (error) {
       console.log(error);
+      process.exit(1);
     }
   };
   
-connectDatabase();
 
 require('./models/Post')
 require('./models/user')
@@ -54,7 +52,11 @@ if(process.env.NODE_ENV === 'production'){
     }
 }
 
-
+connectDatabase().then(()=>{
+  app.listen(PORT, () =>{
+    console.log("listening for requests");
+  })
+})
 
 
 
