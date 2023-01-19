@@ -130,7 +130,7 @@ module.exports.deletePost = async (req, res) =>{
 
   const id = req.params;
   try {
-    const response = await Post.findByIdAndDelete({_id: id});
+    const response = await Post.findByIdAndRemove({_id: id});
     return res.status(200).json({ msg: "Your Article has been Deleted", post: response });
   } catch (error) {
     return res.status(500).json({errors: errors, msg: error.message});
