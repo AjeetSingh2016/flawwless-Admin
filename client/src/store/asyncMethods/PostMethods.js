@@ -114,7 +114,7 @@ export const homePost = () =>{
   return async (dispatch)=>{
     dispatch({ type: "SET_LOADER"})
     try {
-      const {data: {response}} = await axios.get('/home')
+      const {data: {response}} = await axios.get('/home_post')
       console.log(response);
       dispatch({type: "CLOSE_LOADER"})
       dispatch({type: "SET_POSTS", payload: response})

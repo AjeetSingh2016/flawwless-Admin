@@ -16,6 +16,6 @@ router.get("/posts/:id", auth, fetchPosts);
 router.get("/post/:id", auth, fetchPost);
 router.post("/update", [auth, updateValidations], updatePost);
 router.get("/delete/:id", auth, deletePost);
-router.get("/home", home);
+router.get("/home_post", home);
 
 module.exports = router;
