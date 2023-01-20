@@ -139,7 +139,7 @@ module.exports.deletePost = async (req, res) =>{
 
 module.exports.home = async (req, res) => {
   try {
-    const response = await Post.find({})
+    const response = await Post.find({}).sort({updatedAt: -1})
     return res.status(200).json({response: response});
   } catch (error) {
     return res.status(500).json({errors: errors, msg: error.message});
